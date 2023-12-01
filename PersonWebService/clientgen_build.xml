@@ -1,0 +1,50 @@
+<project name="PersonWebService" basedir="." default="build_client">
+
+  <!--
+  Using this build file:
+  When launching from eclipse we want to run clientgen with the jvm on the user's 
+  classpath, not with the jvm that was used to launch the IDE.  The fork_build_client 
+  target accomplishes this.  		
+  		INSTALL_HOME - The home directory of all your WebLogic installation.
+  		WL_HOME	- The root directory of your WebLogic server installation.
+  		ANT_HOME - The Ant Home directory.
+  		JAVA_HOME - Location of the version of Java used to start WebLogic
+              Server. See the WebLogic platform support page for an
+              up-to-date list of supported JVMs on your platform.		
+ 
+        Command Line:  
+		The build_client target can be run directly with the dev environment setup by 
+  		WL_HOME/server/bin/setWLSEnv.
+  		
+  		Run As, Ant Build:
+  		Add WL_HOME/server/lib/weblogic.jar to the Classpath User Entries.  Verify ant home is set 
+  		to INSTALL_HOME/modules/org.apache.ant_VERSION.  Verify JAVA_HOME/lib/tools.jar is on the classpath.
+  		
+  		As Builder:
+  		The following property fork.class.path must be set either in the global ant runtime or in the
+  		local ant build configuration.  The following values must be set in the path:
+  			- WL_HOME/server/lib/weblogic.jar
+  			- ANT_HOME/lib/ant-all.jar
+  			- JAVA_HOME/lib/tools.jar
+  			(ie: WL_HOME\server\lib\weblogic.jar;ANT_HOME\lib\ant-all.jar;JAVA_HOME\lib\tools.jar)
+  
+  -->
+  <target name="build_client">
+    <taskdef name="clientgen" classname="weblogic.wsee.tools.anttasks.ClientGenTask" />
+      
+    <clientgen
+        failonerror="true"
+        type="JAXWS"
+        wsdl="http://localhost:7001/PersonWebService/ConverterService?wsdl"
+        destFile="${basedir}/src/main/webapp/WEB-INF/lib/ConverterService.jar"
+        serviceName="ConverterService"
+        copyWsdl="false"
+        >
+    <sysproperty key="weblogic.wsee.client.ssl.stricthostchecking" value="false"/>
+        
+
+    </clientgen>
+        
+  </target>
+
+</project>

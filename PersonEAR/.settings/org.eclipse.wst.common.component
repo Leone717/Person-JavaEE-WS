@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+            
+    
+    <wb-module deploy-name="PersonEAR">
+                        
+        
+        <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
+                        
+        
+        <dependent-module archiveName="PersonEJB.jar" deploy-path="/" handle="module:/resource/PersonEJB/PersonEJB">
+                                    
+            
+            <dependency-type>uses</dependency-type>
+                                
+        
+        </dependent-module>
+                        
+        
+        <dependent-module archiveName="PersonEJBClient.jar" deploy-path="/" handle="module:/resource/PersonEJBClient/PersonEJBClient">
+                                    
+            
+            <dependency-type>uses</dependency-type>
+                                
+        
+        </dependent-module>
+                        
+        
+        <dependent-module archiveName="PersonWeb.war" deploy-path="/" handle="module:/resource/PersonWeb/PersonWeb">
+                                    
+            
+            <dependency-type>uses</dependency-type>
+                                
+        
+        </dependent-module>
+        <dependent-module archiveName="PersonWebService.war" deploy-path="/" handle="module:/resource/PersonWebService/PersonWebService">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+                    
+    
+    </wb-module>
+        
+
+</project-modules>
